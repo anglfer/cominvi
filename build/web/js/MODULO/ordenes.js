@@ -50,7 +50,6 @@ async function cargarUsuarios() {
 
         let contenido = '<option value="">Seleccione un usuario</option>';
         for (const usuario of usuarios) {
-            // Comprobar si usa status o estatus
             const estadoActivo = usuario.status === 1 || usuario.estatus === 1;
             if (estadoActivo) {
                 contenido += `<option value="${usuario.idusuario}">${usuario.nombre} ${usuario.paterno}</option>`;
