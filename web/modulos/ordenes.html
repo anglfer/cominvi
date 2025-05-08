@@ -1,0 +1,105 @@
+<div id="divDetalleOrden" class="row mt-3">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white text-center">
+                <h4>Nueva Orden de Compra</h4>
+                <button class="btn btn-outline-light position-absolute end-0 me-3" onclick="cm.setDetalleVisible(false);">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="alertContainer" class="mb-3"></div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="cmbUsuario" class="form-label fw-bold">Usuario:</label>
+                        <select id="cmbUsuario" class="form-select form-select-lg" aria-label="Seleccione un usuario">
+                            <option value="">Seleccione un usuario</option>
+                        </select>
+                        <div class="invalid-feedback">Debe seleccionar un usuario</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cmbProducto" class="form-label fw-bold">Producto:</label>
+                        <select id="cmbProducto" class="form-select form-select-lg" aria-label="Seleccione un producto">
+                            <option value="">Seleccione un producto</option>
+                        </select>
+                        <div class="invalid-feedback">Debe seleccionar un producto</div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label for="txtCantidad" class="form-label fw-bold">Cantidad:</label>
+                        <input id="txtCantidad" type="number" class="form-control form-control-lg" min="1" value="1" aria-label="Cantidad">
+                        <div class="invalid-feedback">La cantidad debe ser mayor a 0</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="txtPrecioUnitario" class="form-label fw-bold">Precio Unitario:</label>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text">$</span>
+                            <input id="txtPrecioUnitario" type="number" class="form-control" min="0" step="0.01" aria-label="Precio Unitario">
+                            <div class="invalid-feedback">El precio debe ser mayor a 0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-lg" onclick="cm.guardarOrden();">
+                        <i class="fas fa-save me-2"></i>Guardar Orden
+                    </button>
+                    <button class="btn btn-secondary btn-lg ms-3" onclick="cm.limpiarFormulario()">
+                        <i class="fas fa-eraser me-2"></i>Limpiar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divCatalogoOrdenes" class="row mt-3">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white text-center position-relative">
+                <h4>Catálogo de Órdenes</h4>
+                <button class="btn btn-success position-absolute end-0 me-3 top-50 translate-middle-y" onclick="cm.mostrarFormularioNuevo();">
+                    <i class="fas fa-plus me-2"></i>Nueva Orden
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">Gran Total:</h5>
+                                <h3 id="txtGranTotal" class="text-primary">$0.00</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Categoría Smartphone:</h5>
+                                <h3 id="txtTotalSmartphone" class="text-success">$0.00</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Importe Total</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbodyOrdenes"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

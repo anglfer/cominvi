@@ -1,0 +1,99 @@
+<div id="divDetalleUsuario" class="row mt-2">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success text-white text-center">
+                <h4>Detalle del Usuario</h4>
+                <button class="btn btn-outline-light float-end" onclick="cm.setDetalleUsuarioVisible(false);">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="alertContainer" class="mb-3"></div>
+                <!-- Campo oculto para el ID del usuario -->
+                <input id="txtIdUsuario" type="hidden">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="txtNombre" class="form-label">Nombre:</label>
+                        <input id="txtNombre" type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="txtPaterno" class="form-label">Apellido Paterno:</label>
+                        <input id="txtPaterno" type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="txtMaterno" class="form-label">Apellido Materno:</label>
+                        <input id="txtMaterno" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="txtCorreo" class="form-label">Correo Electrónico:</label>
+                        <input id="txtCorreo" type="email" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="txtFechaRegistro" class="form-label">Fecha Registro:</label>
+                        <input id="txtFechaRegistro" type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Estatus:</label>
+                    <div class="form-check form-switch mt-2">
+                        <input id="chkEstatus" class="form-check-input" type="checkbox" checked
+                               style="transform: scale(1.4);">
+                        <label class="form-check-label" for="chkEstatus">
+                            <span id="lblEstatus" class="text-success fw-bold">Activo</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button id="btnGuardarUsuario" class="btn btn-primary" onclick="cm.validarYGuardarUsuario();">Guardar</button>
+                    <button id="btnCancelarUsuario" class="btn btn-secondary ms-2" onclick="cm.setDetalleUsuarioVisible(false)">Cancelar</button>
+                    <button class="btn btn-danger ms-2" onclick="cm.eliminarUsuario()">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divCatalogoUsuarios" class="row mt-2">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white text-center">
+                <h4>Catálogo de Usuarios</h4>
+                <button id="btnNuevoUsuario" class="btn btn-outline-light float-end" onclick="cm.mostrarFormularioNuevo();">
+                    <i class="fas fa-plus"></i> Nuevo Usuario
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input id="txtBusqueda" type="text" class="form-control" placeholder="Buscar usuarios...">
+                            <button id="btnBuscar" class="btn btn-primary" onclick="cm.buscarUsuarios();">
+                                <i class="fas fa-search"></i> Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>
+                            <th>Correo</th>
+                            <th>Fecha Registro</th>
+                            <th>Estatus</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbodyUsuarios"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
