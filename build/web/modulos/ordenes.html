@@ -3,7 +3,7 @@
         <div class="card shadow">
             <div class="card-header bg-primary text-white text-center">
                 <h4>Nueva Orden de Compra</h4>
-                <button class="btn btn-outline-light position-absolute end-0 me-3" onclick="cm.setDetalleVisible(false);">
+                <button class="btn btn-outline-light float-end" onclick="cm.setDetalleVisible(false);">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -55,14 +55,14 @@
 
 <div id="divCatalogoOrdenes" class="row mt-3">
     <div class="col-12">
-        <div class="card shadow">
-            <div class="card-header bg-primary text-white text-center position-relative">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
                 <h4>Catálogo de Órdenes</h4>
-                <button class="btn btn-success position-absolute end-0 me-3 top-50 translate-middle-y" onclick="cm.mostrarFormularioNuevo();">
-                    <i class="fas fa-plus me-2"></i>Nueva Orden
+                <button id="btnNuevoUsuario" class="btn btn-outline-light float-end" onclick="cm.mostrarFormularioNuevo();">
+                    <i class="fas fa-plus"></i> Nueva Orden
                 </button>
             </div>
-            <div class="card-body">
+            <div class="card-body"> 
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="card bg-light">
