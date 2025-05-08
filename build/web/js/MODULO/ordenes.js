@@ -287,7 +287,6 @@ export async function mostrarFormularioNuevo() {
     setDetalleVisible(true);
 
     setTimeout(async () => {
-        // Cargar datos necesarios para el formulario
         const usuariosOk = await cargarUsuarios();
         const productosOk = await cargarProductos();
 
