@@ -42,7 +42,6 @@ async function cargarUsuarios() {
         const datos = await resp.json();
         usuarios = Array.isArray(datos) ? datos : datos ? [datos] : [];
 
-        // Verificar si el elemento existe antes de actualizarlo
         const cmbUsuario = document.getElementById('cmbUsuario');
         if (!cmbUsuario) {
             console.error("Elemento cmbUsuario no encontrado");
@@ -80,7 +79,6 @@ async function cargarProductos() {
         const datos = await resp.json();
         productos = Array.isArray(datos) ? datos : datos ? [datos] : [];
 
-        // Verificar si el elemento existe antes de actualizarlo
         const cmbProducto = document.getElementById('cmbProducto');
         if (!cmbProducto) {
             console.error("Elemento cmbProducto no encontrado");
@@ -89,7 +87,6 @@ async function cargarProductos() {
 
         let contenido = '<option value="">Seleccione un producto</option>';
         for (const producto of productos) {
-            // Comprobar si usa status o estatus
             const estadoActivo = producto.status === 1 || producto.estatus === 1;
             if (estadoActivo) {
                 contenido += `<option value="${producto.idproducto}">${producto.nombre} - ${producto.categoria}</option>`;
@@ -99,7 +96,6 @@ async function cargarProductos() {
         cmbProducto.innerHTML = contenido;
         console.log("Productos cargados correctamente:", productos.length);
 
-        // Agregar event listener solo si no se ha agregado antes
         cmbProducto.addEventListener('change', function() {
             if (this.value) {
                 const precio = (Math.random() * 4900 + 100).toFixed(2);
@@ -147,13 +143,11 @@ function actualizarTablaOrdenes() {
 }
 
 function calcularTotales() {
-    // Gran total con reduce
     const granTotal = ordenes.reduce((total, orden) => {
         const precioUnitario = orden.preciounitario || 0;
         return total + (orden.cantidad * precioUnitario);
     }, 0);
 
-    // Total smartphones con filter y reduce
     const totalSmartphone = ordenes
         .filter(orden => orden.producto?.categoria?.toLowerCase() === 'smartphone')
         .reduce((total, orden) => {
@@ -201,7 +195,6 @@ export async function guardarOrden() {
     const cantidad = parseInt(document.getElementById('txtCantidad').value);
     const precioUnitario = parseFloat(document.getElementById('txtPrecioUnitario').value);
 
-    // Buscar objetos completos
     const usuario = usuarios.find(u => u.idusuario === usuarioId);
     const producto = productos.find(p => p.idproducto === productoId);
 
@@ -210,7 +203,6 @@ export async function guardarOrden() {
         return;
     }
 
-    // Crear orden para API usando el campo preciounitario directamente
     const nuevaOrden = {
         idorden: 0,
         usuario: usuario,
@@ -273,7 +265,6 @@ export function limpiarFormulario() {
     document.getElementById('txtCantidad').value = 1;
     document.getElementById('txtPrecioUnitario').value = '';
 
-    // Quitar validaciones
     const campos = ['cmbUsuario', 'cmbProducto', 'txtCantidad', 'txtPrecioUnitario'];
     campos.forEach(id => {
         const elemento = document.getElementById(id);
@@ -292,11 +283,9 @@ export function setDetalleVisible(visible) {
 }
 
 export async function mostrarFormularioNuevo() {
-    // Primero hacemos visible el formulario
     limpiarFormulario();
     setDetalleVisible(true);
 
-    // Agregamos un pequeño retraso para asegurar que el DOM esté listo
     setTimeout(async () => {
         // Cargar datos necesarios para el formulario
         const usuariosOk = await cargarUsuarios();
